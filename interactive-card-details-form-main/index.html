@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div id="cont">
+  <div class="desktop-view">
+    <div class="desktop-background">
+    <img src="./images/bg-main-desktop.png" alt="bg" id="desktop-bg-desktop">
+    </div>
+    <div class="nav-background-desktop">
+      <div class="card-back-desktop">
+        <span class="cvv-desktop">{{cvv}}</span>
+      </div>
+      <div class="card-front-desktop">
+        <img src="./images/card-logo.svg" alt="card-logo" width="60" height="33" class="card-logo-desktop">
+        <span class="card-no-desktop">{{cardNumber}}</span><br>
+        <span class="name-desktop">{{cardOwnerName}}</span>
+      <p class="expire-date-on-card-desktop"><span>{{mm}}</span><span>/</span><span>{{yy}}</span></p>
+      </div>
+    </div>
+    <div class="inputs-desktop">
+      <div class="name-div-desktop">
+        <label>cardholder name</label>
+        <input type="text" id="name-desktop" v-model="cardOwnerName">
+      </div>
+      <div class="card-number-div-desktop">
+        <label>card number</label>
+        <input type="text" id="card-number-desktop" v-model="cardNumber">
+      </div>
+      <label>exp. date (mm/yy) <span style="margin-left: 20px;">cvc</span></label>
+      <div class="expire-date-desktop">
+           <input type="text" id="month-desktop" v-model="mm">
+           <input type="text" id="yy-desktop" v-model="yy">
+           <input type="text" id="cvv-desktop"  v-model="cvv">
+      </div>
+      <div class="button-div-desktop">
+      <button class="btn-desktop">confirm</button>
+    </div>
+    </div>
+  </div>
+  <div class="mobile-view">
+    <div class="nav-background">
+      <div class="card-back">
+        <span class="cvv">{{cvv}}</span>
+      </div>
+      <div class="card-front">
+        <img src="./images/card-logo.svg" alt="card-logo" width="60" height="33" class="card-logo">
+        <span class="card-no">{{cardNumber}}</span><br>
+        <span class="name">{{cardOwnerName}}</span>
+      <p class="expire-date-on-card"><span>{{mm}}</span><span>/</span><span>{{yy}}</span></p>
+      </div>
+    </div>
+    <div class="inputs">
+      <div class="name-div">
+        <label>cardholder name</label>
+        <input type="text" id="name" v-model="cardOwnerName">
+      </div>
+      <div class="card-number-div">
+        <label>card number</label>
+        <input type="text" id="card-number" v-model="cardNumber">
+      </div>
+      <label>exp. date (mm/yy) <span style="margin-left: 20px;">cvc</span></label>
+      <div class="expire-date">
+           <input type="text" id="mm" v-model="mm">
+           <input type="text" id="yy" v-model="yy">
+           <input type="text" id="cvv" v-model="cvv">
+      </div>
+      <div class="button-div">
+      <button class="btn" onclick="btnClickMob()">confirm</button>
+    </div>
+    </div>
+  </div>
+</div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="./script.js"></script>
+  <script>
+    let app = Vue.createApp({
+       data() {
+         return {
+            cvv: "000",
+            cardOwnerName: "jane applesed",
+            cardNumber: "0000 0000 0000 0000",
+            mm: "MM",
+            yy: "YY",
+            cvc: "123"
+        }
+       },
+    });
+    app.mount("#cont");
+  </script>
+</body>
+</html>
